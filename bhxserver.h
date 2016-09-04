@@ -16,8 +16,17 @@
 #include <QHostInfo>
 #include <QTextBrowser>
 #include <QJsonValue>
+#include <QHash>
+#include <QThread>
+#include<windows.h>
+#include <QtSql/QSqlQuery>
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlError>
+#include<rapidjson/document.h>
+#include<QObject>
 
 
+using namespace rapidjson;
 
 //#include <QNetworkInterface>
 
@@ -56,12 +65,15 @@ void sendMsg();
 class SendMsgObj
 {
 public:
+	SendMsgObj(bool,int, QString, QString,QString,QString);
+	SendMsgObj();
 	bool isSubCount;
 	QString wxId;
 	QString nickName;
 	int msgType;
-	QString sendData;
+	//QString sendData;
 	QString macCode;
+	QString sendId;
 };
 class Client : public QObject
 {
@@ -84,11 +96,30 @@ class ClientObj
 
 	
 public:
+	ClientObj(SendMsgObj theMsgObject ,QTcpSocket *theSocket);
+	ClientObj();
 	QTcpSocket *theSocket;
 	SendMsgObj theMsgObject;
 private:
 
 };
+class NoTiceXiaoHaoTask :public QThread
+{
+
+	QString mysendid;
+	SendMsgObj data;
+	QTextBrowser *tb;
+	//QHash<QString, QList<ClientObj>*>* HBMap;
+public:
+	NoTiceXiaoHaoTask( SendMsgObj data,QTextBrowser *tb);
+	~NoTiceXiaoHaoTask();
+	void run();
+
+private:
+
+};
+
+
 
 
 

@@ -50,6 +50,9 @@
     <ClCompile Include="GeneratedFiles\qrc_bhxserver.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
+    <ClCompile Include="jsk_json.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="bhxserver.h">
@@ -65,6 +68,9 @@
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_bhxserver.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="jsk_json.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
