@@ -24,13 +24,23 @@
 #include <QtSql/QSqlError>
 #include<rapidjson/document.h>
 #include<QObject>
+#include <QUuid>  
+#include <QCryptographicHash>  
+#include <QSettings>  
+#include <QTime>  
+
+
+
+
 
 
 using namespace rapidjson;
 
 //#include <QNetworkInterface>
 
-
+extern QString getMachineCode(int type);
+bool isAuthrioze();
+QString getMyMac();
 
 class BHXServer : public QMainWindow
 {
@@ -41,7 +51,12 @@ public:
 	~BHXServer();
 	QTcpServer *server;
 	QTcpSocket *clientConnection;
-	QHostAddress getLocalHostIP();
+	QHostAddress getLocalHostIP(); 
+	
+	
+	
+	
+
 	
 private:
 	Ui::BHXServerClass ui;
@@ -61,6 +76,15 @@ void cleanLog();
 public
 slots:
 void sendMsg();
+
+public
+slots:
+void updata_mac();
+
+public
+slots:
+void Authorize();
+
 };
 class SendMsgObj
 {
@@ -79,11 +103,14 @@ class Client : public QObject
 {
 	Q_OBJECT
 public:
-	Client(QTcpSocket *theClient, QTextBrowser *tb);
+	Client(QTcpSocket *theClient, QTextBrowser *tb, QTextBrowser *tb_wx_mac);
 		QTcpSocket *theClient;
 		QTextBrowser *tb_log;
+		QTextBrowser *tb_wx_mac;
 		void noticeXiaoHaoToReceiveHB(SendMsgObj data,QTcpSocket *socket);
 		void xiaoHaoFindHB(SendMsgObj data, QTcpSocket *socket);
+		void findMac(SendMsgObj data, QTcpSocket *socket);
+		void checkServerOnLine(SendMsgObj data, QTcpSocket *socket);
 public
 slots:
 

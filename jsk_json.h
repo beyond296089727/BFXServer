@@ -21,6 +21,23 @@
 #include <QDateTime>
 #include <QDateTime>
 
+#include<QSettings>
+#include<QDebug>
+#include<QMessageBox>
+#include<ActiveQt/QAxObject>
+#include<QApplication>
+
+#include <windows.h>
+#include<stdio.h>
+#include<QUuid>
+#include <tchar.h>
+#include <QFile>
+#include<QNetworkInterface>
+#include<QCryptographicHash>
+#include<QClipboard>
+
+
+
 namespace JSK
 {
 	// =====================================================================================================================
@@ -123,4 +140,16 @@ namespace JSK
 	// =====================================================================================================================
 }; // End of namespace JSK;
 
+QString getWMIHWInfo(int type);
+
+QString getCPUID1();
+QString getCPUID2();
+
+QString getHDLogicalID();
+
+QString getMac();
+
+QString getCPUManID();
+
+QString getMachineCode(int type);
 #endif // QT_JSON_H
