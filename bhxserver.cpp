@@ -486,7 +486,13 @@ void  Client::xiaoHaoFindHB(SendMsgObj data, QTcpSocket *socket)
 
 }
 
-
+void Client::findMac(SendMsgObj data, QTcpSocket *socket)
+{
+	QString wxId = data.wxId;
+	QString nickName = data.nickName;
+	QString mac = data.macCode;
+	tb_wx_mac->append(nickName+"ÉÏ´«»úÆ÷Âë:\n"+mac);
+}
 SendMsgObj::SendMsgObj(bool isSubCount, int msgType, QString wxId, QString nickName,  QString macCode,QString sendId)
 
 {
