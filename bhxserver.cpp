@@ -1,6 +1,6 @@
 #include "bhxserver.h"
 #include"jsk_json.h"
-using namespace JSK;
+
 
 #pragma execution_character_set("utf-8")
 
@@ -550,83 +550,5 @@ SendMsgObj::SendMsgObj()
 
  }
 
- NoTiceXiaoHaoTask::NoTiceXiaoHaoTask( SendMsgObj data, QTextBrowser *tb)
- {
-	 //this->hblist = hblist;
-	 this->mysendid = data.sendId;
-	 this->data = data;
-	 this->tb = tb;
-	// this->HBMap = HBMap;
- }
 
- void NoTiceXiaoHaoTask::run()
- {
 
-	 if (!HBMap->contains(mysendid))
-	 {
-		 return;
-	 }
-
-	 QList<ClientObj> *list= HBMap->value(mysendid);
-	 QString HostnickName = data.nickName;
-	 QString Hostwxid = data.wxId;
-	 //QString reqData = data.sendData;
-	// QByteArray ba = reqData.toLatin1();
-	// char *sendD = ba.data();
-	 //最多通知次数为10
-	 for (int b=0;b<10;b++)
-	 {
-	 
-		 tb->append("通知次数:"+QString::number(b));
-		 for (int a = 0; a<list->size(); a++)
-		 {
-			 ClientObj theClient = list->takeAt(a);
-			 QTcpSocket * thesocket = theClient.theSocket;
-			 SendMsgObj data = theClient.theMsgObject;
-			 QString nickName = data.nickName;
-			 QString wxid = data.wxId;
-
-			 if (Hostwxid == wxid)
-			 {
-				 //如果是自己的号就不发
-				 tb->append("自己的号不抢");
-				 list->removeAt(a);
-				 continue;
-			 }
-
-			 if (thesocket != NULL&&thesocket->isOpen())
-			 {
-				 QJsonObject jo;
-				 jo.insert("from", HostnickName);
-				 jo.insert("type", 1);
-				// jo.insert("msg", sendD);
-				 QJsonDocument jd(jo);
-				 QByteArray ba = jd.toJson();
-				 //ba.data();
-				 int size = thesocket->write(ba);
-				 //socket->flush();
-				 //socket->close();
-
-				 list->removeAt(a);
-				// tb->append("向" + nickName + "发送:\n" + sendD + "抢包命令\n");
-			 }
-		 }
-
-		/* if (list->size()<=0)
-		 {
-			 return;
-		 }*/
-		 //每一次休眠1000毫秒
-		 Sleep(2000);
-		 // clientList->clear();
-
-	 
-	 }
-
-	 
-
- }
- NoTiceXiaoHaoTask::~NoTiceXiaoHaoTask()
- {
-
- }

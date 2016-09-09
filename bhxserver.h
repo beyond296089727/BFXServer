@@ -130,24 +130,6 @@ public:
 private:
 
 };
-class NoTiceXiaoHaoTask :public QThread
-{
-
-	QString mysendid;
-	SendMsgObj data;
-	QTextBrowser *tb;
-	//QHash<QString, QList<ClientObj>*>* HBMap;
-public:
-	NoTiceXiaoHaoTask( SendMsgObj data,QTextBrowser *tb);
-	~NoTiceXiaoHaoTask();
-	void run();
-
-private:
-
-};
-
-
-
 
 
 #endif // BHXSERVER_H
