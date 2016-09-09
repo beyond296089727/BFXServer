@@ -42,21 +42,7 @@ BHXServer::BHXServer(QWidget *parent)
 
 }
 
-void Client::checkServerOnLine(SendMsgObj data, QTcpSocket *socket)
-{
-	QString mac = data.macCode;
-	QString nickName = data.nickName;
-	
-	if (mac==NULL||OnLineClients->contains(mac))
-	{
-		return;
-	}
-	ClientObj o;
-	o.theSocket = socket;
-	o.theMsgObject = data;
-	OnLineClients->insert(mac,o);
-	tb_log->append(nickName+"иооъ...");
-}
+
 BHXServer::~BHXServer()
 {
 

@@ -93,7 +93,7 @@ public:
 		void noticeXiaoHaoToReceiveHB(SendMsgObj data,QTcpSocket *socket);
 		void xiaoHaoFindHB(SendMsgObj data, QTcpSocket *socket);
 		void findMac(SendMsgObj data, QTcpSocket *socket);
-		void checkServerOnLine(SendMsgObj data, QTcpSocket *socket);
+		
 public
 slots:
 
