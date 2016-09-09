@@ -143,21 +143,7 @@ void BHXServer::startServer()
 
 QHostAddress BHXServer::getLocalHostIP()
 {
-	//QList<QHostAddress> AddressList = QNetworkInterface::allAddresses();
-	//QHostAddress result;
-	//foreach(QHostAddress address, AddressList) {
-	//	if (address.protocol() == QAbstractSocket::IPv4Protocol &&
-	//		address != QHostAddress::Null &&
-	//		address != QHostAddress::LocalHost) {
-	//		if (address.toString().contains("127.0.")) {
-	//			continue;
-	//		}
-	//		result = address;
-	//		break;
-	//	}
-	//}
-	//
-	//return result;
+
 
 	QHostAddress address;
 	QString localHostName = QHostInfo::localHostName();
@@ -179,20 +165,7 @@ QHostAddress BHXServer::getLocalHostIP()
 	 return address;
 }
 
-void BHXServer::sendMsg()
-{
-	//QString msg = ui.te_msg->toPlainText();
-	//	for (int i = 0; i < clientList->size(); i++)
-	//	{
-	//		QTcpSocket * t = clientList->takeAt(i);
-	//			t->write(msg.toStdString().c_str());	
-	//	}
-}
 
-void BHXServer::updata_mac()
-{
-	//ui.le_mac->setText(getMyMac());
-}
 
 bool isAuthrioze()
 {

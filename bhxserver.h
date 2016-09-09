@@ -29,14 +29,9 @@
 #include <QSettings>  
 #include <QTime>  
 
-
-
-
-
-
 using namespace rapidjson;
 
-//#include <QNetworkInterface>
+
 
 extern QString getMachineCode(int type);
 bool isAuthrioze();
@@ -54,13 +49,10 @@ public:
 	QHostAddress getLocalHostIP(); 
 	
 	
-	
-	
 
 	
 private:
 	Ui::BHXServerClass ui;
-
 public 
 slots:
 void startServer();
@@ -71,15 +63,6 @@ void acceptConnection();
 public
 slots:
 void cleanLog();
-
-
-public
-slots:
-void sendMsg();
-
-public
-slots:
-void updata_mac();
 
 public
 slots:
